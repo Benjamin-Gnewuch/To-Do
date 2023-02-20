@@ -55,16 +55,17 @@ header {
   background-color: rgb(115, 214, 115);
 }
 
-.todo-list {
+.todo-list-section {
   background-color: #fff;
   border: 1px solid #e5e5e5;
   border-radius: 5px;
   margin: 20px;
   padding: 20px;
+  height: 600px;
+  overflow: scroll;
 
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .todo-list__list {
