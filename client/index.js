@@ -1,21 +1,23 @@
 const todoInputEl = document.querySelector('.todo__input');
 const addBtnEl = document.querySelector('.todo__add-btn');
 
-const sampleData = [
-  {
-    todo_id: 1,
-    description: 'Learn React',
-    created_on: '2020-10-01T00:00:00.000Z',
-  },
-  {
-    todo_id: 2,
-    description: 'Learn Node',
-    created_on: '2020-10-02T00:00:00.000Z',
-  },
-];
+const fetchTodos = async () => {
+  const response = await fetch('http://127.0.0.1:5000/todos');
+  const todos = await response.json();
 
-const renderTodos = todos => {
+  return todos;
+};
+
+const deleteTodo = async id => {
+  const response = await fetch(`http://127.0.0.1:5000/todos/${id}`, {
+    method: 'DELETE',
+  });
+};
+
+const renderTodos = async () => {
   const todoListEl = document.querySelector('.todo-list__list');
+  todoListEl.innerHTML = '';
+  const todos = await fetchTodos();
   todos.forEach(todo => {
     const timestampString = todo.created_on;
     const formattedTimestamp = new Date(timestampString).toLocaleString();
@@ -27,21 +29,17 @@ const renderTodos = todos => {
       <button class="todo-list__item-delete-btn">x</button>
       <p class="todo-list__timestamp">created on: ${formattedTimestamp}</p>
     `;
-    liEl.addEventListener('click', e => {
+
+    // handle todo delete button click
+    liEl.addEventListener('click', async e => {
       if (e.target.classList.contains('todo-list__item-delete-btn')) {
         console.log('delete todo', todo.todo_id);
-        sampleData.splice(sampleData.indexOf(todo), 1);
-        rerenderTodos(sampleData);
+        await deleteTodo(todo.todo_id);
+        await renderTodos();
       }
     });
     todoListEl.appendChild(liEl);
   });
-};
-
-rerenderTodos = todos => {
-  const todoListEl = document.querySelector('.todo-list__list');
-  todoListEl.innerHTML = '';
-  renderTodos(todos);
 };
 
 addBtnEl.addEventListener('click', e => {
@@ -51,4 +49,4 @@ addBtnEl.addEventListener('click', e => {
   console.log(todo);
 });
 
-renderTodos(sampleData);
+renderTodos();
