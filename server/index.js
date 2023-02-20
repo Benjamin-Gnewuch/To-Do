@@ -11,17 +11,7 @@ app.use(express.json());
 
 // Routes
 
-// get all todos
-app.get('/todos', async (req, res) => {
-  try {
-    const allTodos = await pool.query('SELECT * FROM todos ORDER BY todo_id');
-    res.json(allTodos.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// post a todo
+// create a todo
 app.post('/todos', async (req, res) => {
   try {
     const { description } = req.body;
@@ -35,6 +25,32 @@ app.post('/todos', async (req, res) => {
   }
 });
 
+// read all todos
+app.get('/todos', async (req, res) => {
+  try {
+    const allTodos = await pool.query('SELECT * FROM todos ORDER BY todo_id');
+    res.json(allTodos.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// update a todo
+app.put('/todos/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { description } = req.body;
+    await pool.query('UPDATE todos SET description = $1 WHERE todo_id = $2', [
+      description,
+      id,
+    ]);
+    res.send('todo updated');
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+// delete a todo
 app.delete('/todos/:id', async (req, res) => {
   try {
     const { id } = req.params;

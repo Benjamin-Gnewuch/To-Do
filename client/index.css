@@ -55,6 +55,20 @@ header {
   background-color: rgb(115, 214, 115);
 }
 
+.change-btn {
+  font-size: 24px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: rgb(112, 186, 255);
+  border: none;
+  border-radius: 5px;
+}
+
+.change-btn:hover {
+  background-color: rgb(102, 168, 231);
+}
+
 .todo-list-section {
   background-color: #fff;
   border: 1px solid #e5e5e5;
@@ -79,8 +93,35 @@ header {
   border-bottom: 1px solid #999;
 }
 
-.todo-list__item-delete-btn {
+.todo-list__item-edit-btn {
   margin-left: 10px;
+  background-color: rgb(112, 186, 255);
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.todo-list__item-edit-btn:hover {
+  background-color: rgb(102, 168, 231);
+}
+
+.todo-list__item-cancel-btn {
+  background-color: rgb(255, 214, 109);
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.todo-list__item-cancel-btn:hover {
+  background-color: rgb(225, 189, 96);
+}
+
+.todo-list__item-delete-btn {
+  margin-left: 5px;
   background-color: rgb(250, 128, 114);
   padding: 2px 4px;
   cursor: pointer;
@@ -91,6 +132,11 @@ header {
 
 .todo-list__item-delete-btn:hover {
   background-color: rgb(212, 108, 97);
+}
+
+.edit-arrow {
+  color: rgb(112, 186, 255);
+  font-weight: bold;
 }
 
 .todo-list__timestamp {
