@@ -41,11 +41,18 @@ header {
   padding: 5px 10px;
 }
 
-.todo__form button {
+.todo__add-btn {
   font-size: 24px;
   margin-left: 10px;
   padding: 5px 10px;
   cursor: pointer;
+  background-color: rgb(134, 251, 134);
+  border: none;
+  border-radius: 5px;
+}
+
+.todo__add-btn:hover {
+  background-color: rgb(115, 214, 115);
 }
 
 .todo-list {
@@ -58,4 +65,35 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.todo-list__list {
+  list-style: none;
+}
+
+.todo-list__item {
+  margin-bottom: 10px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #999;
+}
+
+.todo-list__item-delete-btn {
+  margin-left: 10px;
+  background-color: rgb(250, 128, 114);
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.todo-list__item-delete-btn:hover {
+  background-color: rgb(212, 108, 97);
+}
+
+.todo-list__timestamp {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #999;
 }
