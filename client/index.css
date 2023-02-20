@@ -7,3 +7,55 @@
 html {
   font-family: sans-serif;
 }
+
+body {
+  background-color: #f5f5f5;
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  height: 100px;
+  line-height: 50px;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo__form input {
+  font-size: 24px;
+  padding: 5px 10px;
+}
+
+.todo__form button {
+  font-size: 24px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.todo-list {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
