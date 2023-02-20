@@ -42,11 +42,22 @@ const renderTodos = async () => {
   });
 };
 
-addBtnEl.addEventListener('click', e => {
+addBtnEl.addEventListener('click', async e => {
   e.preventDefault();
 
-  const todo = todoInputEl.value;
-  console.log(todo);
+  const description = todoInputEl.value;
+
+  if (description !== '') {
+    await fetch('http://127.0.0.1:5000/todos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ description }),
+    });
+    todoInputEl.value = '';
+    await renderTodos();
+  }
 });
 
 renderTodos();
