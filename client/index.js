@@ -27,11 +27,22 @@ const renderTodos = todos => {
       <button class="todo-list__item-delete-btn">x</button>
       <p class="todo-list__timestamp">created on: ${formattedTimestamp}</p>
     `;
+    liEl.addEventListener('click', e => {
+      if (e.target.classList.contains('todo-list__item-delete-btn')) {
+        console.log('delete todo', todo.todo_id);
+        sampleData.splice(sampleData.indexOf(todo), 1);
+        rerenderTodos(sampleData);
+      }
+    });
     todoListEl.appendChild(liEl);
   });
 };
 
-renderTodos(sampleData);
+rerenderTodos = todos => {
+  const todoListEl = document.querySelector('.todo-list__list');
+  todoListEl.innerHTML = '';
+  renderTodos(todos);
+};
 
 addBtnEl.addEventListener('click', e => {
   e.preventDefault();
@@ -39,3 +50,5 @@ addBtnEl.addEventListener('click', e => {
   const todo = todoInputEl.value;
   console.log(todo);
 });
+
+renderTodos(sampleData);
