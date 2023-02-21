@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  height: 100px;
+  line-height: 50px;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo__form input {
+  font-size: 24px;
+  padding: 5px 10px;
+}
+
+.todo__add-btn {
+  font-size: 24px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: rgb(134, 251, 134);
+  border: none;
+  border-radius: 5px;
+}
+
+.todo__add-btn:hover {
+  background-color: rgb(115, 214, 115);
+}
+
+.change-btn {
+  font-size: 24px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: rgb(112, 186, 255);
+  border: none;
+  border-radius: 5px;
+}
+
+.change-btn:hover {
+  background-color: rgb(102, 168, 231);
+}
+
+.todo-list-section {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  height: 600px;
+  overflow: scroll;
+
+  display: flex;
+  justify-content: center;
+}
+
+.todo-list__list {
+  list-style: none;
+  width: 400px;
+}
+
+.todo-list__item {
+  margin-bottom: 10px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #999;
+}
+
+.todo-list__item-edit-btn {
+  margin-left: 10px;
+  background-color: rgb(112, 186, 255);
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.todo-list__item-edit-btn:hover {
+  background-color: rgb(102, 168, 231);
+}
+
+.todo-list__item-cancel-btn {
+  background-color: rgb(255, 214, 109);
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.todo-list__item-cancel-btn:hover {
+  background-color: rgb(225, 189, 96);
+}
+
+.todo-list__item-delete-btn {
+  margin-left: 5px;
+  background-color: rgb(250, 128, 114);
+  padding: 2px 4px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+}
+
+.todo-list__item-delete-btn:hover {
+  background-color: rgb(212, 108, 97);
+}
+
+.edit-arrow {
+  color: rgb(112, 186, 255);
+  font-weight: bold;
+}
+
+.todo-list__timestamp {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #999;
+}
+
+.todo-actions {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.todo-list__item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
