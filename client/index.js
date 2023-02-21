@@ -49,7 +49,9 @@ const renderTodos = async () => {
     const liEl = document.createElement('li');
     liEl.classList.add('todo-list__item');
     liEl.innerHTML = `
+    <div class="todo-list__item-container">
       <span class="todo-list__item-text">${todo.description}</span>
+      <div class="todo-actions">
       ${
         !state.editMode
           ? `<button class="todo-list__item-edit-btn">edit</button>
@@ -62,7 +64,12 @@ const renderTodos = async () => {
           <button class="todo-list__item-cancel-btn">cancel</button>`
           : ''
       }
-      <p class="todo-list__timestamp">created on: ${formattedTimestamp}</p>
+      </div>
+      </div>
+      <p class="todo-list__timestamp">${
+        todo.was_edited ? `edited on:` : `created on:`
+      } ${formattedTimestamp}</p>
+      
     `;
 
     // handle todo delete button click
@@ -80,7 +87,6 @@ const renderTodos = async () => {
         console.log('edit todo', todo.todo_id);
         todoInputEl.value = '';
         enterEditMode(todo.todo_id);
-        //await deleteTodo(todo.todo_id);
         await renderTodos();
       }
     });
