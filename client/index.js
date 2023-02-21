@@ -86,6 +86,7 @@ const renderTodos = async () => {
       if (e.target.classList.contains('todo-list__item-edit-btn')) {
         console.log('edit todo', todo.todo_id);
         todoInputEl.value = '';
+        todoInputEl.focus();
         enterEditMode(todo.todo_id);
         await renderTodos();
       }
