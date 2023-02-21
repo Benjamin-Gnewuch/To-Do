@@ -1,3 +1,6 @@
+// domain name for URL of server. Change this to your domain name.
+const domain = `http://127.0.0.1:5000`;
+
 const todoInputEl = document.querySelector('.todo__input');
 const addOrChangeBtnEl = document.querySelector('.todo__add-btn');
 
@@ -26,14 +29,39 @@ const exitEditMode = () => {
 };
 
 const fetchTodos = async () => {
-  const response = await fetch('http://127.0.0.1:5000/todos');
+  const response = await fetch(`${domain}/todos`);
   const todos = await response.json();
 
   return todos;
 };
 
+const addTodo = async description => {
+  await fetch(`${domain}/todos`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ description }),
+  });
+  todoInputEl.value = '';
+  await renderTodos();
+};
+
+const editTodo = async (id, description) => {
+  await fetch(`${domain}/todos/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ description }),
+  });
+
+  exitEditMode();
+  await renderTodos();
+};
+
 const deleteTodo = async id => {
-  const response = await fetch(`http://127.0.0.1:5000/todos/${id}`, {
+  const response = await fetch(`${domain}/todos/${id}`, {
     method: 'DELETE',
   });
 };
@@ -110,28 +138,11 @@ addOrChangeBtnEl.addEventListener('click', async e => {
   const description = todoInputEl.value;
 
   if (state.editMode === false && description !== '') {
-    await fetch('http://127.0.0.1:5000/todos', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ description }),
-    });
-    todoInputEl.value = '';
-    await renderTodos();
+    await addTodo(description);
   }
 
   if (state.editMode === true && description !== '') {
-    await fetch(`http://127.0.0.1:5000/todos/${state.editId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ description }),
-    });
-
-    exitEditMode();
-    await renderTodos();
+    await editTodo(state.editId, description);
   }
 });
 
