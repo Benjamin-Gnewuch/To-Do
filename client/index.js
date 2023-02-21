@@ -19,6 +19,7 @@ const exitEditMode = () => {
   state.editMode = false;
   state.editId = null;
 
+  todoInputEl.value = '';
   todoInputEl.setAttribute('placeholder', 'Do the thing...');
   addOrChangeBtnEl.textContent = 'Add';
   addOrChangeBtnEl.classList.remove('change-btn');
@@ -77,6 +78,7 @@ const renderTodos = async () => {
     liEl.addEventListener('click', async e => {
       if (e.target.classList.contains('todo-list__item-edit-btn')) {
         console.log('edit todo', todo.todo_id);
+        todoInputEl.value = '';
         enterEditMode(todo.todo_id);
         //await deleteTodo(todo.todo_id);
         await renderTodos();
@@ -120,7 +122,7 @@ addOrChangeBtnEl.addEventListener('click', async e => {
       },
       body: JSON.stringify({ description }),
     });
-    todoInputEl.value = '';
+
     exitEditMode();
     await renderTodos();
   }
